@@ -65,18 +65,18 @@ public class HomeController {
         return "redirect:/";
     }
     @RequestMapping("/detail/{id}")
-    public String showCar(@PathVariable("id") long id, Model model){
+    public String showSong(@PathVariable("id") long id, Model model){
         model.addAttribute("song", songRepository.findById(id).get());
         return "show";
     }
     @RequestMapping("/update/{id}")
-    public String updateCar(@PathVariable("id") long id, Model model){
+    public String updateSong(@PathVariable("id") long id, Model model){
         model.addAttribute("song", songRepository.findById(id).get());
         return "index";
 
     }
     @RequestMapping("/delete/{id}")
-    public  String delCar(@PathVariable("id") long id){
+    public  String delSong(@PathVariable("id") long id){
         songRepository.deleteById(id);
         return "redirect:/";
     }
