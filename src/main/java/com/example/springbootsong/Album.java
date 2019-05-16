@@ -13,6 +13,9 @@ public class Album {
     @OneToMany(mappedBy = "album", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     public Set<Song> songs;
 
+     public Album() {
+    }
+
     public long getId() {
         return id;
     }

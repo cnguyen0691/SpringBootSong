@@ -10,7 +10,7 @@ public class Song {
     private String astirst;
     private String authors;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "Album_id")
+    @JoinColumn(name = "album_id")
     private Album album;
 
     public long getId() {

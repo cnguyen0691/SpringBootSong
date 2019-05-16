@@ -3,11 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
+          <!--integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
 </head>
 <body>
+<form action="#" th:action="@{/processalbum}" th:object="${album}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <h2>Album</h2>
+    Name: <input type="text" th:field="*{name}"><br />
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span><br />
 
+    Year: <input type="number" th:field="*{year}"><br />
+    <span th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></span><br />
+
+
+
+    <input type="submit" value="Submit">
+
+</form>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

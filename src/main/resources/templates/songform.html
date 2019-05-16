@@ -7,7 +7,13 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<form action="#" th:action="@{/process}" th:object="${song}" method="post">
+<select>
+    <th:block th:each="album:${albums}">
+        <option th:text="${album.name}"></option>
+
+    </th:block>
+</select>
+<form action="#" th:action="@{/processsong}" th:object="${song}" method="post">
     <input type="hidden" th:field="*{id}"/>
     Name: <input type="text" th:field="*{songName}"/>
     <span th:if="${#fields.hasErrors('songName')}" th:errors="*{songName}"></span><br/>
