@@ -63,7 +63,7 @@ public class HomeController {
     public String addSongs(@PathVariable("id") long id, Model model){
         model.addAttribute("album", albumRepository.findById(id).get() );
 
-        return "redirect:/songform";
+        return "redirect:/addsongs";
     }
 
 
