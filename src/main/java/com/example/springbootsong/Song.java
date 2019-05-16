@@ -7,7 +7,7 @@ public class Song {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String songName;
-    private String astirst;
+    private String singer;
     private String authors;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "album_id")
@@ -28,13 +28,12 @@ public class Song {
     public void setSongName(String songName) {
         this.songName = songName;
     }
-
-    public String getAstirst() {
-        return astirst;
+    public String getSinger() {
+        return singer;
     }
 
-    public void setAstirst(String astirst) {
-        this.astirst = astirst;
+    public void setSinger(String singer) {
+        this.singer = singer;
     }
 
     public String getAuthors() {

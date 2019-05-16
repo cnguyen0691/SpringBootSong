@@ -27,26 +27,29 @@ public class HomeController {
     }
     @GetMapping("/add")
     public String albumform(Model model){
+        model.addAttribute("songs", songRepository.findAll());
         model.addAttribute("album", new Album());
         return "albumform";
     }
     @PostMapping("/processalbum")
-    public String processform(@Valid Album album, BindingResult result){
+    public String processform(@Valid Album album, BindingResult result, Model model){
         if(result.hasErrors()){
+            model.addAttribute("songs", songRepository.findAll());
             return "albumform";
         }
         albumRepository.save(album);
-        Set<Song> songs = new HashSet<>();
         return "redirect:/";
     }
 
     @RequestMapping("/detail/{id}")
     public String showAlbum(@PathVariable("id") long id, Model model){
         model.addAttribute("album", albumRepository.findById(id).get());
+
         return "show";
     }
     @RequestMapping("/update/{id}")
     public String updateAlbum(@PathVariable("id") long id, Model model){
+        model.addAttribute("songs", songRepository.findAll());
         model.addAttribute("album", albumRepository.findById(id).get());
         return "albumform";
 
@@ -59,29 +62,28 @@ public class HomeController {
     @RequestMapping("/addsongs/{id}")
     public String addSongs(@PathVariable("id") long id, Model model){
         model.addAttribute("album", albumRepository.findById(id).get() );
-        return "redirect:/addsongs";
+
+        return "redirect:/songform";
     }
 
 
     @GetMapping("/addsongs")
     public String songForm(Model model){
         model.addAttribute("albums", albumRepository.findAll());
-
         model.addAttribute("song", new Song());
+
         return "songform";
     }
 
-    @PostMapping("/process_song")
-    public String processForm(@Valid Song song, BindingResult result){
+    @PostMapping("/processsong")
+    public String processForm(@Valid Song song,BindingResult result){
         if (result.hasErrors()){
             return "songform";
         }
 
-        Set<Song> songs = new HashSet<Song>();
-
-
-
+        songRepository.save(song);
         return "redirect:/";
+
     }
 
 }

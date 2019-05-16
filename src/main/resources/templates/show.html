@@ -12,9 +12,9 @@
 Name:<span th:text="${album.name}"></span><br/>
 Year:<span th:text="${album.year}"></span><br/>
 Songs:
-<ul>
+<ul th:href="@{/addsongs}">
     <th:block th:each="song : ${album.songs}">
-        <li th:inline="text"><b>[[${song.title}]]: </b>[[${song.length}]].</li>
+        <li th:inline="text"><b>[[${song.songName}]]: </b>[[${song.singer}]].</li>
     </th:block>
 </ul>
 
