@@ -41,19 +41,19 @@ public class HomeController {
     }
 
     @RequestMapping("/detail/{id}")
-    public String showSong(@PathVariable("id") long id, Model model){
-        model.addAttribute("song", songRepository.findById(id).get());
+    public String showAlbum(@PathVariable("id") long id, Model model){
+        model.addAttribute("album", albumRepository.findById(id).get());
         return "show";
     }
     @RequestMapping("/update/{id}")
-    public String updateSong(@PathVariable("id") long id, Model model){
-        model.addAttribute("song", songRepository.findById(id).get());
-        return "songform";
+    public String updateAlbum(@PathVariable("id") long id, Model model){
+        model.addAttribute("album", albumRepository.findById(id).get());
+        return "albumform";
 
     }
     @RequestMapping("/delete/{id}")
-    public  String delSong(@PathVariable("id") long id){
-        songRepository.deleteById(id);
+    public  String delAlbum(@PathVariable("id") long id){
+        albumRepository.deleteById(id);
         return "redirect:/";
     }
     @RequestMapping("/addsongs/{id}")
